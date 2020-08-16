@@ -20,6 +20,10 @@ const colors = {
 	"dragon": "#A27DFA7D" 
 }
 
+// ===============================================================================================
+// This uses only a single fetch but the results will be shown only when all pokemons are fetched
+// ===============================================================================================
+
 const pokemonStartID = 1;
 const pokemonEndID = 150;
 
