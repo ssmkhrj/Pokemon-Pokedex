@@ -112,3 +112,29 @@ img{
 		transform: rotate(360deg);
 	}
 }
+
+body{
+	position: relative;
+}
+
+.github-container{
+	position: fixed;
+
+	height: 150px;
+	width: 150px;
+
+	background-color: rgb(33, 37, 41, 0.8);
+
+	right: -75px;
+	top: -75px;
+	transform: rotate(45deg);
+}
+
+.github-logo{
+	color: #FFFAFA;
+	position: fixed;
+	font-size: 2.5rem;
+	right: 10px;
+	top: 10px;
+	transform: rotate(45deg);
+}
