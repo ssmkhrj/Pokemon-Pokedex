@@ -28,18 +28,8 @@ const colors = {
 
 fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
 	.then(response => response.json())
-	.then(json => {
-		let allPromises = [];
-		json.results.forEach(el => { allPromises.push(fetch(el.url)) });
-
-		return Promise.all(allPromises);
-	})
-	.then(responses => {
-		let allJsons = [];
-		responses.forEach(el => { allJsons.push(el.json()) })
-
-		return Promise.all(allJsons);
-	})
+	.then(json => Promise.all(json.results.map(el => fetch(el.url))) )
+	.then(responses => Promise.all(responses.map(el => el.json())) )
 	.then(jsons => {
 		pokemonContainer.innerHTML = ""; 
 		jsons.forEach((json, index) => {
