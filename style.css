@@ -31,8 +31,7 @@ body {
   align-items: stretch;
 
   background: #abbaab;
-  background: -webkit-linear-gradient(to right, #ffffff, #abbaab);
-  background: linear-gradient(to right, #ffffff, #abbaab);
+  background: linear-gradient(to right, #d0ece7, #edeed8);
 }
 
 h1 {
@@ -71,7 +70,7 @@ h1 {
 
   box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
   border-radius: 20px;
-  border: 4px solid rgba(255, 255, 255, 0.5);
+  /* border: 4px solid rgba(255, 255, 255, 0.5); */
 }
 
 .poke-id {
