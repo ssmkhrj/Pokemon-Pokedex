@@ -31,6 +31,7 @@ const colors = {
   ice: "#e8feff",
   ghost: "#dbbaff",
   dragon: "#c4bdff",
+  dark: "#a9abb0",
 };
 
 const searchBoxContainer = document.createElement("div");
@@ -49,7 +50,6 @@ async function getPokemons(pokemonStartID, pokemonEndID) {
 
   // Restricting Clicking on Buttons
   buttons.forEach((el) => {
-    console.log("IN");
     el.classList.add("restrict-click");
   });
 
@@ -74,19 +74,78 @@ async function getPokemons(pokemonStartID, pokemonEndID) {
     });
     const imageURL = el.sprites.other["official-artwork"].front_default;
     pokemonContainer.innerHTML += `
-		<div class="pokemon-card">
-			<img src=${imageURL}></img>
-			<div class="circle"></div>
-			<h5 class="poke-id"> #${el.id} </h5>
-			<h5 class="poke-name"> ${pokemonName.replace(/\w/, (ch) =>
-        ch.toUpperCase()
-      )} </h5>
-			<h5> ${pokemonTypes
-        .join(" / ")
-        .replace(/\b\w/g, (ch) => ch.toUpperCase())} </h5>
-		</div>
+    <div class="pc-container">
+      <div class="pokemon-card">
+        <div class="card_front">
+          <img src=${imageURL}></img>
+          <div class="circle"></div>
+          <h5 class="poke-id"> #${el.id} </h5>
+          <h5 class="poke-name"> ${pokemonName.replace(/\w/, (ch) =>
+            ch.toUpperCase()
+          )} </h5>
+          <h5> ${pokemonTypes
+            .join(" / ")
+            .replace(/\b\w/g, (ch) => ch.toUpperCase())} 
+          </h5>
+        </div>
+        <div class="card_back">
+          <div class="poke-stats-name">HP: ${el.stats[0].base_stat}</div>
+          <div class="poke-stats-bar"
+          style="background: linear-gradient(to right, ${
+            colors[pokemonTypes[0]]
+          } ${el.stats[0].base_stat}%, ${colors[pokemonTypes[0]]}71 
+          ${el.stats[0].base_stat}%"
+          >
+          </div>
+          <div class="poke-stats-name">Attack: ${el.stats[1].base_stat}</div>
+          <div class="poke-stats-bar"
+          style="background: linear-gradient(to right, ${
+            colors[pokemonTypes[0]]
+          } ${el.stats[1].base_stat}%, ${colors[pokemonTypes[0]]}71 
+          ${el.stats[1].base_stat}%"
+          >
+          </div>
+          <div class="poke-stats-name">Defense: ${el.stats[2].base_stat}</div>
+          <div class="poke-stats-bar"
+          style="background: linear-gradient(to right, ${
+            colors[pokemonTypes[0]]
+          } ${el.stats[2].base_stat}%, ${colors[pokemonTypes[0]]}71 
+          ${el.stats[2].base_stat}%"
+          >
+          </div>
+          <div class="poke-stats-name">Special-Attack: ${
+            el.stats[3].base_stat
+          }</div>
+          <div class="poke-stats-bar"
+          style="background: linear-gradient(to right, ${
+            colors[pokemonTypes[0]]
+          } ${el.stats[3].base_stat}%, ${colors[pokemonTypes[0]]}71 
+          ${el.stats[3].base_stat}%"
+          >
+          </div>
+          <div class="poke-stats-name">Special-Defense: ${
+            el.stats[4].base_stat
+          }</div>
+          <div class="poke-stats-bar"
+          style="background: linear-gradient(to right, ${
+            colors[pokemonTypes[0]]
+          } ${el.stats[4].base_stat}%, ${colors[pokemonTypes[0]]}71 
+          ${el.stats[4].base_stat}%"
+          >
+          </div>
+          <div class="poke-stats-name">Speed: ${el.stats[5].base_stat}</div>
+          <div class="poke-stats-bar"
+          style="background: linear-gradient(to right, ${
+            colors[pokemonTypes[0]]
+          } ${el.stats[5].base_stat}%, ${colors[pokemonTypes[0]]}71 
+          ${el.stats[5].base_stat}%"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
 		`;
-    const pokemonCards = document.querySelectorAll(".pokemon-card");
+    const pokemonCards = document.querySelectorAll(".card_front");
     const pokemonCard = pokemonCards[pokemonCards.length - 1];
     if (pokemonTypes[1]) {
       pokemonCard.style.background =
@@ -103,7 +162,6 @@ async function getPokemons(pokemonStartID, pokemonEndID) {
   // Enabling Clicking on Buttons
   setTimeout(() => {
     buttons.forEach((el) => {
-      console.log("OUT");
       el.classList.remove("restrict-click");
     });
   }, 500);
@@ -114,7 +172,6 @@ async function getPokemons(pokemonStartID, pokemonEndID) {
 function instantiateListener() {
   const pokemons = document.querySelectorAll(".pokemon-card .poke-name");
   const searchBox = document.querySelector(".search-box");
-  console.log(searchBox, "new");
 
   searchBox.addEventListener("keyup", (e) => {
     const inp = searchBox.value.toLowerCase();
@@ -122,9 +179,11 @@ function instantiateListener() {
     pokemons.forEach((pokemon) => {
       const name = pokemon.textContent.toLowerCase();
       if (name.indexOf(inp) !== -1) {
-        pokemon.parentElement.style.display = "flex";
+        pokemon.parentElement.parentElement.parentElement.style.display =
+          "flex";
       } else {
-        pokemon.parentElement.style.display = "none";
+        pokemon.parentElement.parentElement.parentElement.style.display =
+          "none";
       }
     });
   });
@@ -133,7 +192,6 @@ function instantiateListener() {
 buttons.forEach((el) => {
   el.addEventListener("click", (e) => {
     const searchBox = document.querySelector(".search-box");
-    console.log(searchBox);
     if (searchBox) {
       searchBox.value = "";
     }
