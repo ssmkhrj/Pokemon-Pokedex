@@ -1,140 +1,173 @@
 /* =====================================*/
-/*            BOOTSTRAP STYLES          */ 
-h1{
-	font-size: 2.5rem;
+/*            BOOTSTRAP STYLES          */
+h1 {
+  font-size: 2.5rem;
 }
 
-h5{
-	font-size: 1.25rem;
+h5 {
+  font-size: 1.25rem;
 }
 
-h1, h5{
-	line-height: 1.2;
-	margin-bottom: .5rem;
-	font-weight: 500;
+h1,
+h5 {
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 /* ====================================== */
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-	font-family: "Segoe UI";
-	color: #212529;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
+body {
+  font-family: "Segoe UI";
+  color: #212529;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
-	background: #abbaab; 
-	background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  
-	background: linear-gradient(to right, #ffffff, #abbaab); 
+  background: #abbaab;
+  background: -webkit-linear-gradient(to right, #ffffff, #abbaab);
+  background: linear-gradient(to right, #ffffff, #abbaab);
 }
 
-h1{
-	align-self: center;
-	margin: 30px 0;
-	font-family: 'Lemonada', cursive;
-	text-align: center;
+h1 {
+  align-self: center;
+  margin: 30px 0;
+  font-family: "Lemonada", cursive;
+  text-align: center;
 
-	color: rgb(0,0,0,0.8);
+  color: rgb(0, 0, 0, 0.8);
 }
 
-.pokemon-container{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-	/*Both these lines are only useful for the loader*/
-	height: 100%;
-	align-items: center; 
+  /*Both these lines are only useful for the loader*/
+  height: 100%;
+  align-items: center;
 }
 
-.pokemon-card{
-	position: relative;
-	z-index: -2;
+.pokemon-card {
+  position: relative;
+  z-index: -2;
 
-	height: 300px;
-	width: 185px;
-	border: 1px solid rgba(100,100,100,0.2);
+  height: 300px;
+  width: 185px;
+  border: 1px solid rgba(100, 100, 100, 0.2);
 
-	margin: 20px;
+  margin: 20px;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-	box-shadow: 0 3px 15px rgba(100,100,100,0.5);
-	border-radius: 20px;
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  border-radius: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.5);
 }
 
-.poke-id{
-	margin-top: 10px;
-	border-radius: 20px;
-	padding: 3px 10px;
-	font-size: 1.1rem;
-	background: rgba(0,0,0,0.2);
+.poke-id {
+  margin-top: 10px;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 1.1rem;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-img{
-	width: 70%;
+img {
+  width: 70%;
 }
 
-.circle{
-	padding: 65px;
-	position: absolute;
-	background: rgba(255,255,255,0.5);
-	border-radius: 50%;
-	top: 6%;
-	z-index: -1;
+.circle {
+  padding: 65px;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  top: 6%;
+  z-index: -1;
 }
 
-.poke-name{
-	font-weight: bold;
+.poke-name {
+  font-weight: bold;
 }
 
-.loader{
-	border: 10px solid rgb(0,0,0,0.4);
-	border-radius: 50%;
-	border-top: 10px solid transparent;
-	height: 65px;
-	width: 65px;
-	
-	animation: spin 1.5s linear infinite
+.loader {
+  border: 10px solid rgb(0, 0, 0, 0.4);
+  border-radius: 50%;
+  border-top: 10px solid transparent;
+  height: 65px;
+  width: 65px;
+
+  animation: spin 1.5s linear infinite;
 }
 
-@keyframes spin{
-	to{
-		transform: rotate(360deg);
-	}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-body{
-	position: relative;
+body {
+  position: relative;
 }
 
-.github-container{
-	position: fixed;
+.github-container {
+  position: fixed;
 
-	height: 150px;
-	width: 150px;
+  height: 150px;
+  width: 150px;
 
-	background-color: rgb(33, 37, 41, 0.8);
+  background-color: rgb(33, 37, 41, 0.8);
 
-	right: -75px;
-	top: -75px;
-	transform: rotate(45deg);
+  right: -75px;
+  top: -75px;
+  transform: rotate(45deg);
 }
 
-.github-logo{
-	color: #FFFAFA;
-	position: fixed;
-	font-size: 2.5rem;
-	right: 10px;
-	top: 10px;
-	transform: rotate(45deg);
+.github-logo {
+  color: #fffafa;
+  position: fixed;
+  font-size: 2.5rem;
+  right: 10px;
+  top: 10px;
+  transform: rotate(45deg);
+}
+
+.search-box-container {
+  align-self: center;
+  width: 50%;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-bottom: 3px solid #212529;
+}
+
+.fa-search {
+  border-bottom: 3px solid #212529;
+  color: #212529;
+}
+
+.search-box:focus {
+  border-bottom: 3px solid darkred;
+}
+
+.search-box:focus + .fa-search {
+  border-bottom: 3px solid darkred;
+  color: darkred;
 }
