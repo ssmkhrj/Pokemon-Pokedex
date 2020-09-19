@@ -192,10 +192,10 @@ body {
   pointer-events: none;
 }
 
-.button-container button:hover {
+/* .button-container button:hover {
   cursor: pointer;
-}
+} */
 
-button:hover.restrict-click {
-  cursor: not-allowed;
+.button-container .restrict-click {
+  color: lightgrey;
 }

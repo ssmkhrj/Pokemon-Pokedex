@@ -11,6 +11,7 @@ const generations = [
 ];
 
 let currentGen = 0;
+let firstTime = true;
 
 const colors = {
   grass: "#d2f2c2",
@@ -59,7 +60,11 @@ async function getPokemons(pokemonStartID, pokemonEndID) {
     promises.push(json);
   }
   pokemonContainer.innerHTML = "";
-  document.body.insertBefore(searchBoxContainer, pokemonContainer);
+
+  if (firstTime) {
+    document.body.insertBefore(searchBoxContainer, pokemonContainer);
+    firstTime = false;
+  }
 
   promises.forEach((el, ind) => {
     const pokemonName = el.name;
@@ -109,6 +114,7 @@ async function getPokemons(pokemonStartID, pokemonEndID) {
 function instantiateListener() {
   const pokemons = document.querySelectorAll(".pokemon-card .poke-name");
   const searchBox = document.querySelector(".search-box");
+  console.log(searchBox, "new");
 
   searchBox.addEventListener("keyup", (e) => {
     const inp = searchBox.value.toLowerCase();
@@ -126,6 +132,11 @@ function instantiateListener() {
 
 buttons.forEach((el) => {
   el.addEventListener("click", (e) => {
+    const searchBox = document.querySelector(".search-box");
+    console.log(searchBox);
+    if (searchBox) {
+      searchBox.value = "";
+    }
     if (
       e.target.id === "right-btn" &&
       !e.target.classList.contains("restrict-click")
