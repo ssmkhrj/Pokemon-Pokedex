@@ -20,60 +20,6 @@ const colors = {
   dragon: "#c4bdff",
 };
 
-fetch("https://pokeapi.co/api/v2/pokemon?limit=150")
-  .then((response) => response.json())
-  .then((json) => {
-    let allPromises = [];
-    json.results.forEach((el) => {
-      allPromises.push(fetch(el.url));
-    });
-
-    return Promise.all(allPromises);
-  })
-  .then((responses) => {
-    let allJsons = [];
-    responses.forEach((el) => {
-      allJsons.push(el.json());
-    });
-
-    return Promise.all(allJsons);
-  })
-  .then((jsons) => {
-    pokemonContainer.innerHTML = "";
-    jsons.forEach((json, index) => {
-      const pokemonName = json.name;
-      const pokemonTypes = [];
-      json.types.forEach((item) => {
-        pokemonTypes.push(item.type.name);
-      });
-      pokemonContainer.innerHTML += `
-			<div class="pokemon-card">
-				<img src="https://pokeres.bastionbot.org/images/pokemon/${index + 1}.png"></img>
-				<div class="circle"></div>
-				<h5 class="poke-id"> #${index + 1} </h5>
-				<h5 class="poke-name"> ${pokemonName.replace(/\w/, (ch) =>
-          ch.toUpperCase()
-        )} </h5>
-				<h5> ${pokemonTypes
-          .join(" / ")
-          .replace(/\b\w/g, (ch) => ch.toUpperCase())} </h5>
-			</div>
-			`;
-      const pokemonCards = document.querySelectorAll(".pokemon-card");
-      const pokemonCard = pokemonCards[pokemonCards.length - 1];
-      if (pokemonTypes[1]) {
-        pokemonCard.style.background =
-          "linear-gradient(150deg," +
-          colors[json.types[0].type.name] +
-          " 50%," +
-          colors[json.types[1].type.name] +
-          " 50%)";
-      } else {
-        pokemonCard.style.background = colors[pokemonTypes[0]];
-      }
-    });
-  });
-
 const searchBoxContainer = document.createElement("div");
 searchBoxContainer.setAttribute("class", "search-box-container");
 searchBoxContainer.innerHTML = `
@@ -108,7 +54,7 @@ async function getPokemons() {
     const imageURL = el.sprites.other["official-artwork"].front_default;
     pokemonContainer.innerHTML += `
 		<div class="pokemon-card">
-			<img src="https://pokeres.bastionbot.org/images/pokemon/${ind + 1}.png"></img>
+			<img src=${imageURL}></img>
 			<div class="circle"></div>
 			<h5 class="poke-id"> #${ind + 1} </h5>
 			<h5 class="poke-name"> ${pokemonName.replace(/\w/, (ch) =>
