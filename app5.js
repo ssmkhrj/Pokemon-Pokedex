@@ -1,5 +1,6 @@
 const pokemonContainer = document.querySelector(".pokemon-container");
 const buttons = document.querySelectorAll(".button-container button");
+const pagination = document.querySelectorAll(".pagination");
 const heading = document.querySelector("#heading");
 
 const generations = [
@@ -204,14 +205,18 @@ buttons.forEach((el) => {
       e.target.id === "right-btn" &&
       !e.target.classList.contains("restrict-click")
     ) {
+      pagination[currentGen].classList.remove("current-page");
       currentGen = (currentGen + 1) % generations.length;
+      pagination[currentGen].classList.add("current-page");
       heading.innerText = generations[currentGen][0] + " Pokédex";
       getPokemons(generations[currentGen][1], generations[currentGen][2]);
     } else if (
       e.target.id === "left-btn" &&
       !e.target.classList.contains("restrict-click")
     ) {
+      pagination[currentGen].classList.remove("current-page");
       currentGen = (currentGen - 1 + generations.length) % generations.length;
+      pagination[currentGen].classList.add("current-page");
       heading.innerText = generations[currentGen][0] + " Pokédex";
       getPokemons(generations[currentGen][1], generations[currentGen][2]);
     }
