@@ -46,6 +46,7 @@ searchBoxContainer.innerHTML = `
 // ===============================================================================================
 
 async function getPokemons(pokemonStartID, pokemonEndID) {
+  // Adding the loader
   pokemonContainer.innerHTML = `<span class="loader"></span>`;
 
   // Restricting Clicking on Buttons
@@ -53,12 +54,16 @@ async function getPokemons(pokemonStartID, pokemonEndID) {
     el.classList.add("restrict-click");
   });
 
-  const promises = [];
+  // Fetching all pokemons
+  const responses = [];
   for (let id = pokemonStartID; id <= pokemonEndID; id++) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const json = await response.json();
-    promises.push(json);
+    const response = fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    responses.push(response);
   }
+  const proms = await Promise.all(responses);
+  const promises = await Promise.all(proms.map((el) => el.json()));
+
+  // Removing the loader
   pokemonContainer.innerHTML = "";
 
   if (firstTime) {
