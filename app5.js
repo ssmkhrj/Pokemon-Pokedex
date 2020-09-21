@@ -223,4 +223,16 @@ buttons.forEach((el) => {
   });
 });
 
+pagination.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    if (!buttons[0].classList.contains("restrict-click")) {
+      pagination[currentGen].classList.remove("current-page");
+      currentGen = el.textContent - 1;
+      pagination[currentGen].classList.add("current-page");
+      heading.innerText = generations[currentGen][0] + " Pokédex";
+      getPokemons(generations[currentGen][1], generations[currentGen][2]);
+    }
+  });
+});
+
 getPokemons(generations[0][1], generations[0][2]);
