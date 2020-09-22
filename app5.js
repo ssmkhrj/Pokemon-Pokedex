@@ -225,6 +225,10 @@ buttons.forEach((el) => {
 
 pagination.forEach((el) => {
   el.addEventListener("click", (e) => {
+    const searchBox = document.querySelector(".search-box");
+    if (searchBox) {
+      searchBox.value = "";
+    }
     if (!buttons[0].classList.contains("restrict-click")) {
       pagination[currentGen].classList.remove("current-page");
       currentGen = el.textContent - 1;
