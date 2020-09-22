@@ -30,7 +30,7 @@ body {
   flex-direction: column;
   align-items: stretch;
 
-  overflow: scroll; /*To always have the scrollbar*/
+  overflow-y: scroll; /* To always have the scrollbar */
 
   background: #abbaab;
   background: linear-gradient(to right, #d0ece7, #edeed8);
