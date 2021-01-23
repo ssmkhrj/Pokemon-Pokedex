@@ -25,7 +25,8 @@ h5 {
 body {
   font-family: "Segoe UI";
   color: #212529;
-  height: 100vh;
+  /* height: 100vh; */
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -51,8 +52,8 @@ h1 {
   justify-content: center;
 
   /*Both these lines are only useful for the loader*/
-  height: 100%;
-  align-items: center;
+  /* height: 100%; */
+  /* align-items: center; */
 }
 
 /* ============================ */
@@ -158,7 +159,7 @@ img {
   border-top: 10px solid transparent;
   height: 65px;
   width: 65px;
-
+  margin-top: 150px;
   animation: spin 1.5s linear infinite;
 }
 
